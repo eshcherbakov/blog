@@ -1,8 +1,8 @@
 package org.parma.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.hibernate.validator.constraints.Email;
 import org.parma.config.Constants;
 
@@ -14,8 +14,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
-@Getter
-@Setter
+@Data
 public class User implements Serializable {
 
     @Id
