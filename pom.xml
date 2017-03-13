@@ -1,70 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+pom.xml (Project Object Model) - основной файл, описывающий Maven-проект.
+
+Maven - инструмент для сборки Java-проекта: компиляция,
+создание jar-файлов, генерации документации.
+
+Более подробная информация: http://www.apache-maven.ru/project-file.html
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Версия POM -->
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.parma</groupId>
+    <!--
+    Основная и обязательная информация о проекте:
+    groupId - обычно доменное имя организации или сайта проекта,
+    artifactId - название проекта,
+    version - версия проекта.
+     -->
     <artifactId>blog</artifactId>
+    <groupId>org.parma</groupId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <!--
+    Наследуемcя от проекта spring-boot-starter-parent
+    -->
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
         <version>1.5.1.RELEASE</version>
-        <relativePath />
     </parent>
 
+    <!-- Свойства. Их можно рассматривать как переменные -->
     <properties>
+        <!-- Определяем версию Java для компилятора -
+        для исходного проекта и компилируемой версии - 1.8 -->
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
+    <!-- Зависимости - список всех библиотек, которые используются в проекте -->
     <dependencies>
+
+        <!--
+        Плагин для построения веб-приложения,
+        включая сервисы RESTful,
+        приложения с использованием Spring MVC.
+        Использует сервер Tomcat для развёртыважния приложения по умолчанию
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        <!--
+        Плагин для использования в проекте Spring Data JPA
+        вместе с Hibernate.
+        JPA (Java Persistence API)- спецификация API Java EE,
+        предоставляющая возможность сохранять в удобном виде Java-объекты в базе данных.
+        Hibernate - библиотека, предназначенная для решения задач объектно-реляционного отображения.
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
+        <!--
+        Компонент для поддержкки СУБД H2.
+        H2 - открытая кроссплатформенная СУБД, полностью написанная на языке Java.
+        Данную СУБД используем для разработки приложения.
+        -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.193</version>
         </dependency>
+
+        <!--
+        Lombok - плагин, упрощающий Java-код.
+        В проекте используется для генерации get- и set-методов на этапе компиляции проекта.
+        Требуется установка плагина для IDE.
+        Дополнительная информация: https://urvanov.ru/2015/09/22/project-lombok/
+        -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.14</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--
+        flyway - плагин для версионирования структуры базы данных
+        и поддержания её в актуальном состоянии.
+        Дополнительная информация: https://urvanov.ru/2015/06/16/миграция-схемы-базы-данных-с-помощью-flyway/
+        -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
             <version>4.1.2</version>
         </dependency>
+
+        <!-- junit - библиотека для модульного тестирования Java-приложения -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+
+        <!-- Плагин для поддержки тестирования Spring-boot-приложения -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Плагин для поддержки тестирования Spring-приложения -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -72,9 +125,18 @@
         </dependency>
     </dependencies>
 
+    <!--
+    Раздел build содержит информацию по самой сборке: где находятся исходные файлы, где ресурсы, какие плагины используются.
+    -->
     <build>
+        <!-- Цель (задача) Maven, выполняемая по умолчанию -->
+        <!-- Подробная информация: http://programador.ru/maven-lifecycle-phase-goal/ -->
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
+            <!--
+            Плагин выполняет сборку SrpingBoot-приложения
+            Подробная информация: http://spring-projects.ru/guides/convert-jar-to-war-maven/
+            -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
