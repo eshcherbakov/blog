@@ -28,10 +28,4 @@ public class Blog implements Serializable {
     @Size(min = 3)
     @Column(name = "name", nullable = false)
     private String name;
-
-    @Column(name = "description")
-    private String description;
-
-    @ManyToOne
-    private User user;
 }

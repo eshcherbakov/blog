@@ -8,5 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 @SuppressWarnings("unused")
 public interface TagRepository extends JpaRepository<Tag,Long> {
-
 }
