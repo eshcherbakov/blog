@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 /**
- * Spring Data JPA repository for the Blog entity.
+ * Spring Data JPA-репозиторий для сущности блога.
  */
 @SuppressWarnings("unused")
 public interface BlogRepository extends JpaRepository<Blog,Long> {

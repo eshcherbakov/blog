@@ -1,4 +1,4 @@
-package org.parma;
+package org.parma.web.rest;
 
 import org.parma.model.Greeting;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * что он готов к использованию Spring MVC для обработки HTTP-запросов
  */
 @RestController
-public class GreetingController {
+public class GreetingResource {
 
     /**
      * При поступлении GET-запроса / будет выполнен метод greeting.

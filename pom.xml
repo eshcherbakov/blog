@@ -121,7 +121,26 @@ Maven - инструмент для сборки Java-проекта: компи
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.7.RELEASE</version>
+            <version>4.3.6.RELEASE</version>
+        </dependency>
+
+        <!--
+        Mockito предназначен для создания заглушек,
+        которые можно использовать при написании интеграционных тестов
+        вместо реальных классов или интерфейсов
+         -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+        </dependency>
+
+        <!-- Библиотека для чтения JSON-документов -->
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <scope>test</scope>
+            <!-- parent POM declares this dependency in default (compile) scope -->
         </dependency>
     </dependencies>
 

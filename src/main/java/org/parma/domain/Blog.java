@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
- * A Blog.
+ * Сущность блога.
  */
 @Entity
 @Table(name = "blog")
@@ -25,7 +25,15 @@ public class Blog implements Serializable {
     private Long id;
 
     @NotNull
+    // Минимальное количество символов в наименовании блога
     @Size(min = 3)
     @Column(name = "name", nullable = false)
     private String name;
+
+    /**
+     * Описание блога.
+     * Может принимать значение NULL
+     */
+    @Column(name = "description", nullable = true)
+    private String description;
 }
